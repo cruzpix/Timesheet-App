@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Freelance Timesheet App for tracking hours and earnings.">
+  <title>Timesheet</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-glow"></div>
+  
+  <div class="app-container">
+    <header>
+      <div class="user-info">
+        <div class="avatar">JC</div>
+        <div>
+          <p>Contractor</p>
+          <h1>Joey Cruz</h1>
+        </div>
+      </div>
+      <div class="client-info" style="text-align: right;">
+        <p>Madden Media</p>
+        <h3>Nez Perce Tourism</h3>
+      </div>
+    </header>
+
+    <div class="dashboard-metrics">
+      <div class="glass-panel metric-card earnings">
+        <h2>Total Bill</h2>
+        <div class="metric-value" id="total-bill">$0.00</div>
+        <p>At $130.00 / hr</p>
+      </div>
+      <div class="glass-panel metric-card">
+        <h2>Total Hours</h2>
+        <div class="metric-value" id="total-hours">0.00</div>
+        <p>hours worked</p>
+      </div>
+    </div>
+
+    <main class="glass-panel">
+      <div class="entries-header">
+        <h2>Recent Entries</h2>
+        <p id="entry-count">0 entries</p>
+      </div>
+      <div class="entry-list" id="entry-list">
+        <!-- Entries will be injected here by JS -->
+        <div class="empty-state">No time entries yet. Clock in to get started!</div>
+      </div>
+    </main>
+  </div>
+
+  <div class="fab-container">
+    <button class="fab" id="fab-add" aria-label="Add Time Entry">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+  </div>
+
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add Time Entry</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+      <form id="entry-form">
+        <div class="form-group">
+          <label for="entry-date">Date</label>
+          <input type="date" id="entry-date" required>
+        </div>
+        <div class="form-group">
+          <label for="time-in">Time In</label>
+          <input type="time" id="time-in" required>
+        </div>
+        <div class="form-group">
+          <label for="time-out">Time Out</label>
+          <input type="time" id="time-out" required>
+        </div>
+        <div class="form-group">
+          <label for="lunch-duration">Lunch Duration (minutes)</label>
+          <input type="number" id="lunch-duration" placeholder="e.g. 60" value="0" min="0">
+        </div>
+        <button type="submit" class="btn-primary">Save Entry</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
